@@ -27,5 +27,7 @@ Went to Prof Salazar's office hours today
 * This will require documenting my progress, implementing new features, and what I've learned
 
 
-
-
+### 02/08/19, Week 5 Friday
+* Created "Bird.h" that creates the bird
+    + created a simple declaration of the class (few functions & private members)
+* I have a Game.cpp/Game.h file created too but it has yet been uploaded
