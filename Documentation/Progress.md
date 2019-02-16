@@ -44,6 +44,23 @@ ALSO
 * I am using this [Snake Game](https://github.com/MeLikeyCode/SnakeGameMovementElongationDemo) tutorial/code on github as a reference for building the game and connecting files
 
 
+### 02/15/19, Week 6 Friday
+In the PIC lab at this moment
+
+Notes from today:
+* QGraphicsViews provides a widget for displaying contents of a QGraphics scene
+	+ that's why you include both classes when creating the game window
+* Games contain a "Game.cpp/Game.h" that runs the entire game
+	+ sets scene (function that I have used)
+	+ creates window to display scene
+	+ handles the logical side of things
+	+ brings all objects together
+
+Updates on Project:
+* I have successfully created the game window!
+* Created a Game and Bird class at this moment
+	+ need to implement an obstacles class
+
 
 
 
