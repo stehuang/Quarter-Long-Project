@@ -2,21 +2,20 @@
 #define GAME_H
 
 #include <QGraphicsView>
-#include <QgraphicsScene>
+#include <QGraphicsScene>
 
 
-class Game:public QGraphicsView
-{
+class Game:public QGraphicsView{
 public:
     // constructor; parent is initialized to null
-    Game(QWidget* parent = NULL);
+    Game(QGraphicsScene* parent = nullptr);
 
     void start();
 
-    QGraphicsScene *scene;
+//    QGraphicsScene *scene;
 
 private:
-
+    QGraphicsScene *scene = new QGraphicsScene(0, 0, 400, 300);
 };
 
 #endif // GAME_H

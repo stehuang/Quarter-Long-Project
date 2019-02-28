@@ -62,6 +62,40 @@ Updates on Project:
 	+ need to implement an obstacles class
 
 
+### 02/22/19, Week 7 Friday
+Notes from today:
+* The QGraphics class is a partially pure virtual class
+	+ it has functions like "KeyPress event" but need to be redefined in a game/graphics program
+	+ thus, we need to redefined such functions
+* There is a hierarchy for QGraphics items; there are multiple classes beneath QGraphics with sub-classes of their own
+	+ QGraphicsRectItem is a sub-sub class
+
+Updates on Project:
+* Tried to draw the object (i.e. the bird) in the frame by initially declaring it as a QGraphicsRectItem
+* Couldn't display it
+	+ The output says there is a linkage error- something about the vtable being missing
+	+ I have read on stack overflow that it is typically because pure virtual functions haven't been refined in your derived class
+	+ Implemented a destructor for the bird class; still couldn't work
+* I'll try to make it to office hours on Tuesday
+
+
+
+### 02/26/19, Week 8 Tuesday
+I went to Andrew's office hours this afternoon
+
+Notes from today:
+* Good programming practice tip: figure out when an item should be stored as a private variable
+* Debug by slowing replacing variables in working code
+
+Updates on Project:
+* I figured out how to display the bird on the main window
+* Debugged with Andrew by first writing simple code to display a rectange in the main.cpp, having all the code in one place first
+	+ replaced the GraphicsView item with a Game item(i.e. inherits from GraphicsView) to display the scene
+	+ added in my bird item; ran the program and it returned no errors, so this class has no errors
+* The trick was to **declare my scene from QGraphicsScene as a private variable in the Game class and initializing the size too**
+	+ this ensure that it wasn't a temporary variable and could be accessed via various functions, esp crucial when needing to display the scene
+
+
 
 
 
