@@ -8,7 +8,7 @@ extern Game* game;
 Bird::Bird(QGraphicsItem* parent)
 {
     // draw rect
-    setRect(0,0,50,50);
+    setRect(0,0,30,30);
     QBrush brush;
     brush.setStyle(Qt::SolidPattern);
     brush.setColor(Qt::blue);
@@ -22,21 +22,16 @@ Bird::Bird(QGraphicsItem* parent)
 Bird::~Bird(){};
 
 
-//extern Game* game;
+void Bird::keyPressEvent(QKeyEvent* event){
+    if (event->key() == Qt::Key_Space){
+        int xPos = x();
+        int yPos = y() - boundingRect().height();
+        setPos(xPos,yPos);
+    }
+}
 
-//Bird::Bird(QGraphicsItem *parent){
-//    // draw
-//    setRect(0,0,30,50);
-//    QBrush brush;
-//    brush.setStyle(Qt::SolidPattern);
-//    brush.setColor(Qt::blue);
-//    setBrush(brush);
 
-//    // make focusable
-//    setFlag(QGraphicsItem::ItemIsFocusable,true);
-//}
 
-//Bird::~Bird() {}
 
 
 

@@ -12,7 +12,7 @@ public:
     virtual ~Bird() override;
 
     // events
-    // void keyPressEvent(QKeyEvent* event) override;
+    void keyPressEvent(QKeyEvent* event) override;
 
 
 private:
