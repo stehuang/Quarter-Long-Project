@@ -4,6 +4,7 @@
 #include <QGraphicsItem>
 #include <QKeyEvent>
 #include <QPointF>
+#include <QTimer>
 
 
 class Bird:public QGraphicsRectItem{
@@ -14,8 +15,11 @@ public:
     // events
     void keyPressEvent(QKeyEvent* event) override;
 
+    void gravity();
+
 
 private:
+    QTimer *myTimer = new QTimer;
 };
 
 #endif // BIRD_H
