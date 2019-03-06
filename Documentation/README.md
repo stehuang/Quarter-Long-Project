@@ -96,7 +96,7 @@ Updates on Project:
 	+ this ensure that it wasn't a temporary variable and could be accessed via various functions, esp crucial when needing to display the scene
 
 
-### 03/24/19, Week 9 Monday
+### 03/04/19, Week 9 Monday
 
 Notes from today:
 * QTimer vs QTime
@@ -113,6 +113,21 @@ Updates on Project:
 	+ implement gravity() function that decreases bird's position on the screen
 	+ create timer that calls gravity every second or so
 * I have successfully implemented the gravity function, just need to implement the timer & connect it with the function
+
+
+### 03/06/19, Week 9 Wednesday
+
+Talked to Prof Salazar after class about connect()
+
+Notes from today:
+* connect should be performed on QObject items and is a function that belongs to QObject items
+* if many objects in the game depend on the timer, it's better to create the QTimer object in the main.cpp/Game world
+
+Updates on Project:
+* I was unable to connect the timer with the bird's gravity function
+	+ error says the "connect()" function couldn't be found
+	+ Bird is from a class that inherits from QObject, so I'm kinda of confused
+* Might work on creating the obstacles and their basic functions first, then proceed to work on connecting everything together
 
 
 
