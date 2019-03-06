@@ -96,6 +96,24 @@ Updates on Project:
 	+ this ensure that it wasn't a temporary variable and could be accessed via various functions, esp crucial when needing to display the scene
 
 
+### 03/24/19, Week 9 Monday
+
+Notes from today:
+* QTimer vs QTime
+	+ QTimer is used more as a time
+	+ QTime is used more for converting time between different units
+* QTimer functions
+	+ timeout(): function that *signals* that time is up; commonly used in connect() as the signal
+	+ stop(): stops timing
+	+ setInterval(x): sets countdown time for timer
+
+Updates on Project:
+* I am trying to implement the gravity feature in the game
+* There are two steps to doing this:
+	+ implement gravity() function that decreases bird's position on the screen
+	+ create timer that calls gravity every second or so
+* I have successfully implemented the gravity function, just need to implement the timer & connect it with the function
+
 
 
 
