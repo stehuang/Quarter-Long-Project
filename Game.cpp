@@ -3,27 +3,42 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <iostream>
 
 Game::Game(QGraphicsScene *parent):QGraphicsView(parent){
     // set scene size and window
     //QGraphicsScene* scene = new QGraphicsScene(0, 0, 400, 300);
     setScene(scene);
+    pipeCount = 0;
 }
 
 void Game::start(){
-   Bird* bird = new Bird(nullptr);
-   scene->addItem(bird);
+   bird->setPos(0,125);
    bird->setFlag(QGraphicsItem::ItemIsFocusable);
    bird->setFocus();
 
-   QGraphicsRectItem * rect = new QGraphicsRectItem();
-       rect->setRect(0,0,200,200); // change the rect from 0x0 (default) to 100x100 pixels
+   // add the item to the scene
+   scene->addItem(bird);
 
-       // add the item to the scene
-       scene->addItem(bird);
-       scene->addItem(rect);
+   //addPipe();
+   //if(pipeCount < 3){
+       //Pipe* pipe = new Pipe(nullptr);
+       pipe->setPos(400,0);
+       pipe->setFlag(QGraphicsItem::ItemIsFocusable);
+       pipe->setFocus();
+       scene->addItem(pipe);
+       ++pipeCount;
+   //}
 
-       // make rect focusable
-       rect->setFlag(QGraphicsItem::ItemIsFocusable);
-       rect->setFocus();
+}
+
+void Game::addPipe(){
+    if(pipeCount < 3){
+        pipe->setPos(800,600);
+        pipe->setFlag(QGraphicsItem::ItemIsFocusable);
+        pipe->setFocus();
+        scene->addItem(pipe);
+        ++pipeCount;
+    }
+    //std::cout << "add pipe";
 }

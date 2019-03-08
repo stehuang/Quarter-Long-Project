@@ -4,18 +4,24 @@
 #include <QGraphicsItem>
 #include <QKeyEvent>
 #include <QPointF>
+#include <QTimer>
+
 
 
 class Bird:public QGraphicsRectItem{
 public:
-    Bird(QGraphicsItem* parent=nullptr);
+    Bird(QWidget *parent=nullptr);
     virtual ~Bird() override;
 
     // events
-    // void keyPressEvent(QKeyEvent* event) override;
+    void keyPressEvent(QKeyEvent* event) override;
 
+public slots:
+    void gravity();
 
 private:
+    QTimer *myTimer = new QTimer;
+
 };
 
 #endif // BIRD_H
