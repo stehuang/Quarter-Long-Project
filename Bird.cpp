@@ -1,4 +1,3 @@
-
 #include "Bird.h"
 #include "Game.h"
 #include <QBrush>
@@ -28,7 +27,11 @@ Bird::~Bird(){};
 
 void Bird::keyPressEvent(QKeyEvent* event){
     if (event->key() == Qt::Key_Space){
+<<<<<<< HEAD
         if(y() >= 0 & y() <= 600){
+=======
+        if(y() >= 10 & y() <= 600){
+>>>>>>> motion
             int xPos = x();
             int yPos = y() - boundingRect().height();
             setPos(xPos,yPos);
@@ -36,6 +39,7 @@ void Bird::keyPressEvent(QKeyEvent* event){
     }
     //gravity();
 }
+<<<<<<< HEAD
 
 
 void Bird::gravity(){
@@ -46,6 +50,13 @@ void Bird::gravity(){
     }
 }
 
+=======
+>>>>>>> motion
 
 
+void Bird::gravity(){
+        int xPos = x();
+        int yPos = y() + 100;
+        setPos(xPos,yPos);
+}
 
