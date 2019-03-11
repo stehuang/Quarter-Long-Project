@@ -1,29 +1,21 @@
 #include "Pipe.h"
 #include "Game.h"
 #include <QBrush>
-<<<<<<< HEAD
-#include <cstdlib>
-=======
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>
->>>>>>> motion
+#include <iostream>
 
 extern Game* game;
 
 
-Pipe::Pipe(QWidget *parent)
+Pipe::Pipe(QGraphicsItem* parent)
 {
     // draw rect
-<<<<<<< HEAD
-    int width = std::rand() % (100 + 1 - 25) + 25;
-    int height = std::rand() % (350 + 1 - 100) + 100;
-=======
     srand (time(NULL));
     int width = std::rand() % 100 + 10;
     int height = std::rand() % 300 + 25;
->>>>>>> motion
-    setRect(0,0,width,height);
+    setRect(500,0,width,height);
     QBrush brush;
     brush.setStyle(Qt::SolidPattern);
     brush.setColor(Qt::green);
@@ -35,3 +27,27 @@ Pipe::Pipe(QWidget *parent)
 }
 
 Pipe::~Pipe(){};
+
+
+void Pipe::doSomething(){
+    int xPos = x() - 100;
+    int yPos = y();
+    setPos(xPos,yPos);
+    std::cout << "function working";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

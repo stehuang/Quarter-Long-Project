@@ -6,15 +6,15 @@
 #include <QPointF>
 #include <QTimer>
 
-class Pipe:public QGraphicsRectItem
-{
-
+class Pipe:public QObject, public QGraphicsRectItem{
+    Q_OBJECT
 public:
-    Pipe(QWidget *parent=nullptr);
+    Pipe(QGraphicsItem* parent=nullptr);
     virtual ~Pipe() override;
 
-private:
-    bool isAlive = true;
+public slots:
+    void doSomething();
+
 };
 
 #endif // PIPE_H

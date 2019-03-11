@@ -138,11 +138,18 @@ Notes from today:
 * To use signals & slots, an object must inherit from QObject
 * A class can inherit from multiple classes in Qt
 * QTimer::singleshot() sets a timer & connects to a slot **without** needing to create a QTimer object
+* Proper memory management
+
 
 Updates on Project:
 * I got the timer working by using QTimer::singleshot() and making the Bird additionally inherit from QObject & adding the "Q_OBJECT" macro
 * Implementing functions for the character and players should be easy
 * Need to focus on integrating such items into the Game world and letting it orchestrate the game
+* I have create a vector to pointers to Pipe objects to store pipes
+	+ this will help with managing multiple pipes in the game
+	+ will use for loop for moving pipes
+	+ will use foor loop for memory management
+* Wrote a proper deconstructor for the Game world because it utilizes pointers
 
 
 

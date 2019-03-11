@@ -7,17 +7,16 @@
 #include <QObject>
 #include <QGraphicsScene>
 #include <QTimer>
+#include <vector>
 
+using namespace std;
 
 class Game:public QGraphicsView {
-<<<<<<< HEAD
-=======
     Q_OBJECT
->>>>>>> motion
 public:
     // constructor; parent is initialized to null
     Game(QGraphicsScene* parent = nullptr);
-
+    virtual ~Game() override;
     void start();
 
     void addPipe();
@@ -27,10 +26,8 @@ private:
     Pipe* pipe = new Pipe(nullptr);
     QGraphicsScene *scene = new QGraphicsScene(0, 0, 600, 400);
     int pipeCount;
-<<<<<<< HEAD
-    //QTimer *myTimer = new QTimer;
-=======
->>>>>>> motion
+    vector <Pipe*> pipes;
+
 };
 
 #endif // GAME_H

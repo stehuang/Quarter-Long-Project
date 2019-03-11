@@ -4,7 +4,7 @@
 
 extern Game* game;
 
-Bird::Bird(QWidget *parent)
+Bird::Bird(QGraphicsItem* parent)
 {
     // draw rect
     setRect(0,0,30,30);
@@ -16,10 +16,6 @@ Bird::Bird(QWidget *parent)
     // make focusable
     setFlag(QGraphicsItem::ItemIsFocusable,true);
 
-    myTimer->start(6000);
-
-    //QObject::connect(myTimer, SIGNAL(timeout()), this, SLOT(gravity()))
-
 }
 
 Bird::~Bird(){};
@@ -27,11 +23,7 @@ Bird::~Bird(){};
 
 void Bird::keyPressEvent(QKeyEvent* event){
     if (event->key() == Qt::Key_Space){
-<<<<<<< HEAD
-        if(y() >= 0 & y() <= 600){
-=======
         if(y() >= 10 & y() <= 600){
->>>>>>> motion
             int xPos = x();
             int yPos = y() - boundingRect().height();
             setPos(xPos,yPos);
@@ -39,19 +31,6 @@ void Bird::keyPressEvent(QKeyEvent* event){
     }
     //gravity();
 }
-<<<<<<< HEAD
-
-
-void Bird::gravity(){
-    if(y() >= 0 & y() <= 600){
-        int xPos = x();
-        int yPos = y() + 50;
-        setPos(xPos,yPos);
-    }
-}
-
-=======
->>>>>>> motion
 
 
 void Bird::gravity(){
