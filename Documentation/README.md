@@ -130,7 +130,19 @@ Updates on Project:
 * Might work on creating the obstacles and their basic functions first, then proceed to work on connecting everything together
 
 
+### 03/10/19, Week 9 Sunday
 
+
+Notes from today:
+* QGraphicsItem DOES NOT inherit from QObject
+* To use signals & slots, an object must inherit from QObject
+* A class can inherit from multiple classes in Qt
+* QTimer::singleshot() sets a timer & connects to a slot **without** needing to create a QTimer object
+
+Updates on Project:
+* I got the timer working by using QTimer::singleshot() and making the Bird additionally inherit from QObject & adding the "Q_OBJECT" macro
+* Implementing functions for the character and players should be easy
+* Need to focus on integrating such items into the Game world and letting it orchestrate the game
 
 
 
