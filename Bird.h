@@ -7,7 +7,9 @@
 #include <QTimer>
 
 
-class Bird:public QGraphicsRectItem{
+
+class Bird:public QObject, public QGraphicsRectItem{
+    Q_OBJECT
 public:
     Bird(QGraphicsItem* parent=nullptr);
     virtual ~Bird() override;
@@ -15,11 +17,12 @@ public:
     // events
     void keyPressEvent(QKeyEvent* event) override;
 
+public slots:
     void gravity();
 
+//private:
+//    QTimer *myTimer = new QTimer;
 
-private:
-    QTimer *myTimer = new QTimer;
 };
 
 #endif // BIRD_H

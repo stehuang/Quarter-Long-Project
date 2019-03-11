@@ -1,4 +1,3 @@
-
 #include "Bird.h"
 #include "Game.h"
 #include <QBrush>
@@ -17,10 +16,6 @@ Bird::Bird(QGraphicsItem* parent)
     // make focusable
     setFlag(QGraphicsItem::ItemIsFocusable,true);
 
-    // set timer to change motion
-    //Game::connect(myTimer, SIGNAL(timeout()), this, SLOT(gravity()));
-    myTimer->start(1000);
-
 }
 
 Bird::~Bird(){};
@@ -28,22 +23,19 @@ Bird::~Bird(){};
 
 void Bird::keyPressEvent(QKeyEvent* event){
     if (event->key() == Qt::Key_Space){
-        int xPos = x();
-        int yPos = y() - boundingRect().height();
-        setPos(xPos,yPos);
+        if(y() >= 10 & y() <= 600){
+            int xPos = x();
+            int yPos = y() - boundingRect().height();
+            setPos(xPos,yPos);
+        }
     }
-    gravity();
+    //gravity();
 }
 
 
 void Bird::gravity(){
-    if(y() < 400){
         int xPos = x();
         int yPos = y() + 100;
         setPos(xPos,yPos);
-    }
 }
-
-
-
 

@@ -1,21 +1,29 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "Bird.h"
+#include "Pipe.h"
 #include <QGraphicsView>
+#include <QObject>
 #include <QGraphicsScene>
+#include <QTimer>
 
 
-class Game:public QGraphicsView{
+class Game:public QGraphicsView {
+    Q_OBJECT
 public:
     // constructor; parent is initialized to null
     Game(QGraphicsScene* parent = nullptr);
 
     void start();
 
-//    QGraphicsScene *scene;
+    void addPipe();
 
 private:
-    QGraphicsScene *scene = new QGraphicsScene(0, 0, 400, 300);
+    Bird* bird = new Bird(nullptr);
+    Pipe* pipe = new Pipe(nullptr);
+    QGraphicsScene *scene = new QGraphicsScene(0, 0, 600, 400);
+    int pipeCount;
 };
 
 #endif // GAME_H
