@@ -154,6 +154,39 @@ Updates on Project:
 
 
 
+### 03/14/19, Week 10 Thursday
+Went to Andrew's OH today
+
+Notes from today:
+* Once you declare a QWidget with the O_OBJECT macro in the class, you can use QObject::connect()
+* It is sufficient to have a few function related to your Game World
+* Game::start() can ran the whole game
+	+ relies on other Game functions & bird's status to operate
+
+
+Updates on Project:
+* I realized that I could create a QTimer object in the Game class
+	+ in fact, since I need to update the Game interface every second, I **need a singular object** to orchastrate the game, opposed to writing a huge for loop
+* Connected a QTimer with Game::move()
+	+ Game::move() tells every *alive* game object to do something every interval
+* I can finally program objects (i.e. pipes) to move! A vector of pointers to Pipe object works in this case
+	+ can write for loop to make every pipe move
+	+ don't need to move 'dead' objects; need to check alive status so program doesn't perform more tasks than needed
+* Difficulties/issues:
+	+ Adding pipes AFTER the game starts
+	+ Detecting collisions
+
+
+Things to do:
+* Replace things & background with proper images
+* Implement:
+	+ menu + start button
+	+ interface when bird dies
+	+ interface when you lose + button to restart
+
+
+
+
 
 
 

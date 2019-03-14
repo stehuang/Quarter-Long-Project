@@ -16,6 +16,8 @@ public:
 
     // events
     void keyPressEvent(QKeyEvent* event) override;
+    bool isAlive();
+    void doSomething();
 
 public slots:
     void gravity();

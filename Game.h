@@ -18,12 +18,16 @@ public:
     Game(QGraphicsScene* parent = nullptr);
     virtual ~Game() override;
     void start();
+    //void addPipe();
+    void cleanObjects();
 
+public slots:
+    void move();
     void addPipe();
 
 private:
     Bird* bird = new Bird(nullptr);
-    Pipe* pipe = new Pipe(nullptr);
+    //Pipe* pipe = new Pipe(nullptr);
     QGraphicsScene *scene = new QGraphicsScene(0, 0, 600, 400);
     int pipeCount;
     vector <Pipe*> pipes;

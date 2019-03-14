@@ -29,13 +29,26 @@ Pipe::Pipe(QGraphicsItem* parent)
 Pipe::~Pipe(){};
 
 
-void Pipe::doSomething(){
-    int xPos = x() - 100;
-    int yPos = y();
-    setPos(xPos,yPos);
-    std::cout << "function working";
+string Pipe::getPos(){
+    string xPos = to_string(x());
+    string yPos = to_string(y());
+    string pos = "(" + xPos + ", " + yPos + ")";
+    return pos;
 }
 
+
+bool Pipe::isAlive(){
+    if(x() < -600)
+        return false;
+    return true;
+}
+
+
+void Pipe::doSomething(){
+    int xPos = x() - 50;
+    int yPos = y();
+    setPos(xPos,yPos);
+}
 
 
 

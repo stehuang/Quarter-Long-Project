@@ -12,7 +12,7 @@ Game::Game(QGraphicsScene *parent):QGraphicsView(parent){
     //QGraphicsScene* scene = new QGraphicsScene(0, 0, 400, 300);
     setScene(scene);
     pipeCount = 0;
-    for(int i=0; i<1; i++){
+    for(int i=0; i<2; i++){
         pipes.push_back(new Pipe(nullptr));
     }
 }
@@ -21,9 +21,6 @@ Game::~Game(){
     vector<Pipe*>::iterator i;
     i = pipes.begin();
     for(; i != pipes.end(); i++){
-//            delete *i; // deletes the actor object and pointer to the actor
-//            actors.erase(i);
-//            --i;
        Pipe* object = *i;
        delete object;
        i = pipes.erase(i);
@@ -38,34 +35,83 @@ void Game::start(){
    // add the item to the scene
    scene->addItem(bird);
 
-   for(int i=0; i<1; i++){
-       pipes[i]->setPos(600,300);
-       pipes[i]->setFlag(QGraphicsItem::ItemIsFocusable);
-       scene->addItem(pipe);
+  // for(int i=0; i<2; i++){
+       pipes[0]->setPos(300,100);
+       scene->addItem(pipes[0]);
        ++pipeCount;
-       pipes[i] -> setFocus();
-   }
+       pipes[1]->setPos(300,300);
+       scene->addItem(pipes[1]);
+       ++pipeCount;
+  // }
 
 //       pipe->setPos(400,0);
 //       pipe->setFlag(QGraphicsItem::ItemIsFocusable);
 //       scene->addItem(pipe);
 //       ++pipeCount;
    // pipe->setFocus();
+        bird->setFocus();
+   // while(bird->isAlive()){
+        QTimer *myTimer = new QTimer(this);
+        QObject::connect(myTimer, SIGNAL(timeout()), this, SLOT(move()));
+        //QObject::connect(myTimer, SIGNAL(timeout()), this, SLOT(addPipe()));
+        bird->setFocus();
+        myTimer->start(500);
+
+
+}
+
+
+void Game::move(){
     bird->setFocus();
-    bool test = true;
-    for(int i = 0; i< 40; ++i){
-        QTimer::singleShot(6000, bird, SLOT(gravity()));
-        QTimer::singleShot(2000, pipe, SLOT(doSomething()));
+    bird->gravity();
+    for(int i=0; i<pipeCount; i++){
+        //if(pipes[i] -> isAlive())
+            pipes[i]->doSomething();
+            std::cout << "Pipe"<< ": " << pipes[i] ->getPos() << endl;
+    }
+    cleanObjects();
+    // addPipe();
+}
+
+
+
+void Game::addPipe(){
+//    if(pipeCount <= 3){
+        pipes.push_back(new Pipe(nullptr));
+        ++pipeCount;
+        pipes[pipeCount-1]->setPos(800,600);
+        scene->addItem(pipes[pipeCount-1]);
+        std::cout << "pipe count: " << pipeCount << endl;
+//    }
+
+//    Pipe* pipe = new Pipe(nullptr);
+//    pipe->setPos(700,300);
+//    scene->addItem(pipe);
+}
+
+
+void Game::cleanObjects(){
+    for(int i=0; i < pipeCount; ++i){
+        if(pipes[i]->isAlive() == false){
+            --pipeCount;
+        }
     }
 }
 
-void Game::addPipe(){
-    if(pipeCount < 3){
-        pipe->setPos(800,600);
-        pipe->setFlag(QGraphicsItem::ItemIsFocusable);
-        pipe->setFocus();
-        scene->addItem(pipe);
-        ++pipeCount;
-    }
-    //std::cout << "add pipe";
-}
+
+
+
+// bird:
+// - gravity
+// - check for collisions
+// - check alive
+// - change window
+// - turn off gravity
+// - show restart button
+
+
+// print out full list of vector address; print out their current position too;
+
+
+
+

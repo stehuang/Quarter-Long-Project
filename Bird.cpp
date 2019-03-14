@@ -20,22 +20,54 @@ Bird::Bird(QGraphicsItem* parent)
 
 Bird::~Bird(){};
 
-
 void Bird::keyPressEvent(QKeyEvent* event){
     if (event->key() == Qt::Key_Space){
-        if(y() >= 10 & y() <= 600){
+        if(y() >= 10 & isAlive()){
             int xPos = x();
             int yPos = y() - boundingRect().height();
             setPos(xPos,yPos);
         }
     }
-    //gravity();
+
+    if (event->key() == Qt::Key_Right){
+        if(y() >= 10 & isAlive()){
+            int xPos = x() + 20;
+            int yPos = y();
+            setPos(xPos,yPos);
+        }
+    }
+
+    if (event->key() == Qt::Key_Left){
+        if(y() >= 10 & isAlive()){
+            int xPos = x() - 20;
+            int yPos = y();
+            setPos(xPos,yPos);
+        }
+    }
+}
+
+bool Bird::isAlive(){
+    if(y() > 600)
+        return false;
+    return true;
 }
 
 
 void Bird::gravity(){
-        int xPos = x();
-        int yPos = y() + 100;
-        setPos(xPos,yPos);
+   if(isAlive()){
+       int xPos = x();
+       int yPos = y() + 50;
+       setPos(xPos,yPos);
+   }
 }
+
+
+
+
+
+
+
+
+
+
 
