@@ -50,11 +50,14 @@ In the PIC lab at this moment
 Notes from today:
 * QGraphicsViews provides a widget for displaying contents of a QGraphics scene
 	+ that's why you include both classes when creating the game window
+* QGraphicsViews essentially encapsulates a QGraphics scene in the sense that it acts like a stage/platform for things to be added in
+	+ learned from this [example](https://doc.qt.io/archives/qt-4.8/graphicsview.html) on the Qt documentation website
 * Games contain a "Game.cpp/Game.h" that runs the entire game
 	+ sets scene (function that I have used)
 	+ creates window to display scene
 	+ handles the logical side of things
 	+ brings all objects together
+* I have watched this [tutorial](https://www.youtube.com/watch?v=8ntEQpg7gck) on YouTube to learn how to draw objects
 
 Updates on Project:
 * I have successfully created the game window!
@@ -121,6 +124,8 @@ Talked to Prof Salazar after class about connect()
 
 Notes from today:
 * connect should be performed on QObject items and is a function that belongs to QObject items
+	+ there exists a generic connect function too, but it should be defined within a QObject subclass
+	+ I read about it [here](https://stackoverflow.com/questions/20932376/difference-between-qobjectconnect-vs-connect-methods)
 * if many objects in the game depend on the timer, it's better to create the QTimer object in the main.cpp/Game world
 
 Updates on Project:
@@ -134,10 +139,10 @@ Updates on Project:
 
 
 Notes from today:
-* QGraphicsItem DOES NOT inherit from QObject
+* QGraphicsItem DOES NOT inherit from QObject, as read on this [Qt Forum](https://www.qtcentre.org/threads/12630-QGraphicsItem-doesn-t-inherit-QObject)
 * To use signals & slots, an object must inherit from QObject
 * A class can inherit from multiple classes in Qt
-* QTimer::singleshot() sets a timer & connects to a slot **without** needing to create a QTimer object
+* [QTimer::singleshot()](https://doc.qt.io/qt-5/qtimer.html#singleShot-prop) sets a timer & connects to a slot **without** needing to create a QTimer object
 * Proper memory management
 
 
@@ -183,6 +188,28 @@ Things to do:
 	+ menu + start button
 	+ interface when bird dies
 	+ interface when you lose + button to restart
+
+
+
+### 03/16/19, Week 10 Saturday
+
+Notes from Today:
+* I have learned [how Qt's coordinate system works](https://doc.qt.io/archives/3.3/coordsys.html):
+	+ dimension != coordinates
+	+ a 1000 by 1000 window's center is (0,0)
+	+ coordinates can be negative
+* Qt's coordinate system incorporates all 4 quadrants of the Cartesian coordinate system
+	+ I thought the most bottom-left corner was (0,0)
+
+Updates:
+* I have been successful with adding new pipes in the game
+	+ still adds new pipes to the vector of pointers to pipes
+	+ eliminated need to "clean up" objects by checking if objects are alive or not
+	+ costly at the moment, but will try to make efficient later
+* Introduced another timer that adds pipes at a slower pace
+* 
+
+
 
 
 
