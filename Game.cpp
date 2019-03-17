@@ -12,7 +12,7 @@ Game::Game(QGraphicsScene *parent):QGraphicsView(parent){
     //QGraphicsScene* scene = new QGraphicsScene(0, 0, 400, 300);
     setScene(scene);
     pipeCount = 0;
-    for(int i=0; i<2; i++){
+    for(int i=0; i<1; i++){
         pipes.push_back(new Pipe(nullptr));
     }
 }
@@ -35,14 +35,11 @@ void Game::start(){
    // add the item to the scene
    scene->addItem(bird);
 
-  // for(int i=0; i<2; i++){
-       pipes[0]->setPos(300,100);
-       scene->addItem(pipes[0]);
+  for(int i=0; i<1; i++){
+       pipes[i]->setPos(600,300);
+       scene->addItem(pipes[i]);
        ++pipeCount;
-       pipes[1]->setPos(300,300);
-       scene->addItem(pipes[1]);
-       ++pipeCount;
-  // }
+   }
 
 //       pipe->setPos(400,0);
 //       pipe->setFlag(QGraphicsItem::ItemIsFocusable);
@@ -53,9 +50,12 @@ void Game::start(){
    // while(bird->isAlive()){
         QTimer *myTimer = new QTimer(this);
         QObject::connect(myTimer, SIGNAL(timeout()), this, SLOT(move()));
-        //QObject::connect(myTimer, SIGNAL(timeout()), this, SLOT(addPipe()));
         bird->setFocus();
         myTimer->start(500);
+
+        QTimer *pipeTimer = new QTimer(this);
+        QObject::connect(pipeTimer, SIGNAL(timeout()), this, SLOT(addPipe()));
+        pipeTimer->start(3000);
 
 
 }
@@ -65,12 +65,13 @@ void Game::move(){
     bird->setFocus();
     bird->gravity();
     for(int i=0; i<pipeCount; i++){
-        //if(pipes[i] -> isAlive())
+        if(pipes[i] -> isAlive()){
             pipes[i]->doSomething();
             std::cout << "Pipe"<< ": " << pipes[i] ->getPos() << endl;
+        }
     }
-    cleanObjects();
-    // addPipe();
+    //cleanObjects();
+    //addPipe();
 }
 
 
@@ -79,7 +80,7 @@ void Game::addPipe(){
 //    if(pipeCount <= 3){
         pipes.push_back(new Pipe(nullptr));
         ++pipeCount;
-        pipes[pipeCount-1]->setPos(800,600);
+        pipes[pipeCount-1]->setPos(600,100);
         scene->addItem(pipes[pipeCount-1]);
         std::cout << "pipe count: " << pipeCount << endl;
 //    }
