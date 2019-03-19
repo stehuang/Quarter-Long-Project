@@ -38,7 +38,11 @@ void Game::start(){
    scene->addItem(bird);
 
   for(int i=0; i<1; i++){
+<<<<<<< HEAD
        pipes[i]->setPos(300,0);
+=======
+       pipes[i]->setPos(600,300);
+>>>>>>> gameworld
        scene->addItem(pipes[i]);
        ++pipeCount;
    }
@@ -74,6 +78,7 @@ void Game::move(){
 
 
 void Game::addPipe(){
+<<<<<<< HEAD
     srand (time(NULL));
     int yPos = std::rand()%2;
     if(yPos == 1)
@@ -83,6 +88,19 @@ void Game::addPipe(){
     pipes[pipeCount-1]->setPos(500,yPos);
     scene->addItem(pipes[pipeCount-1]);
     std::cout << "pipe count: " << pipeCount << endl;
+=======
+//    if(pipeCount <= 3){
+        pipes.push_back(new Pipe(nullptr));
+        ++pipeCount;
+        pipes[pipeCount-1]->setPos(600,100);
+        scene->addItem(pipes[pipeCount-1]);
+        std::cout << "pipe count: " << pipeCount << endl;
+//    }
+
+//    Pipe* pipe = new Pipe(nullptr);
+//    pipe->setPos(700,300);
+//    scene->addItem(pipe);
+>>>>>>> gameworld
 }
 
 
