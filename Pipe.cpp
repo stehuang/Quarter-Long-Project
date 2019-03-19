@@ -14,7 +14,7 @@ Pipe::Pipe(QGraphicsItem* parent)
     // draw rect
     srand (time(NULL));
     int width = std::rand() % 100 + 10;
-    int height = std::rand() % 300 + 25;
+    int height = std::rand() % 250+ 25;
     setRect(500,0,width,height);
     QBrush brush;
     brush.setStyle(Qt::SolidPattern);

@@ -11,11 +11,11 @@
 
 using namespace std;
 
-class Game:public QGraphicsView {
+class Game:public QGraphicsView{
     Q_OBJECT
 public:
     // constructor; parent is initialized to null
-    Game(QGraphicsScene* parent = nullptr);
+    Game(QWidget* parent = nullptr);
     virtual ~Game() override;
     void start();
     //void addPipe();
@@ -31,6 +31,7 @@ private:
     QGraphicsScene *scene = new QGraphicsScene(0, 0, 600, 400);
     int pipeCount;
     vector <Pipe*> pipes;
+
 
 };
 

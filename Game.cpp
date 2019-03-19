@@ -5,14 +5,17 @@
 #include <QGraphicsView>
 #include <iostream>
 #include <QTimer>
-#include <list>
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>
 
-Game::Game(QGraphicsScene *parent):QGraphicsView(parent){
+
+Game::Game(QWidget *parent):QGraphicsView(parent){
     // set scene size and window
-    //QGraphicsScene* scene = new QGraphicsScene(0, 0, 400, 300);
+    scene->setBackgroundBrush(Qt::black);
     setScene(scene);
     pipeCount = 0;
-    for(int i=0; i<2; i++){
+    for(int i=0; i<1; i++){
         pipes.push_back(new Pipe(nullptr));
     }
 }
@@ -28,34 +31,28 @@ Game::~Game(){
 }
 
 void Game::start(){
-   bird->setPos(0,125);
+   bird->setPos(0,200);
    bird->setFlag(QGraphicsItem::ItemIsFocusable);
-
 
    // add the item to the scene
    scene->addItem(bird);
 
-  // for(int i=0; i<2; i++){
-       pipes[0]->setPos(300,100);
-       scene->addItem(pipes[0]);
+  for(int i=0; i<1; i++){
+       pipes[i]->setPos(300,0);
+       scene->addItem(pipes[i]);
        ++pipeCount;
-       pipes[1]->setPos(300,300);
-       scene->addItem(pipes[1]);
-       ++pipeCount;
-  // }
+   }
 
-//       pipe->setPos(400,0);
-//       pipe->setFlag(QGraphicsItem::ItemIsFocusable);
-//       scene->addItem(pipe);
-//       ++pipeCount;
-   // pipe->setFocus();
         bird->setFocus();
-   // while(bird->isAlive()){
+
         QTimer *myTimer = new QTimer(this);
         QObject::connect(myTimer, SIGNAL(timeout()), this, SLOT(move()));
-        //QObject::connect(myTimer, SIGNAL(timeout()), this, SLOT(addPipe()));
         bird->setFocus();
         myTimer->start(500);
+
+        QTimer *pipeTimer = new QTimer(this);
+        QObject::connect(pipeTimer, SIGNAL(timeout()), this, SLOT(addPipe()));
+        pipeTimer->start(3000);
 
 
 }
@@ -65,28 +62,27 @@ void Game::move(){
     bird->setFocus();
     bird->gravity();
     for(int i=0; i<pipeCount; i++){
-        //if(pipes[i] -> isAlive())
+        if(pipes[i] -> isAlive()){
             pipes[i]->doSomething();
             std::cout << "Pipe"<< ": " << pipes[i] ->getPos() << endl;
+        }
     }
-    cleanObjects();
-    // addPipe();
+    //cleanObjects();
+    //addPipe();
 }
 
 
 
 void Game::addPipe(){
-//    if(pipeCount <= 3){
-        pipes.push_back(new Pipe(nullptr));
-        ++pipeCount;
-        pipes[pipeCount-1]->setPos(800,600);
-        scene->addItem(pipes[pipeCount-1]);
-        std::cout << "pipe count: " << pipeCount << endl;
-//    }
-
-//    Pipe* pipe = new Pipe(nullptr);
-//    pipe->setPos(700,300);
-//    scene->addItem(pipe);
+    srand (time(NULL));
+    int yPos = std::rand()%2;
+    if(yPos == 1)
+        yPos = 300;
+    pipes.push_back(new Pipe(nullptr));
+    ++pipeCount;
+    pipes[pipeCount-1]->setPos(500,yPos);
+    scene->addItem(pipes[pipeCount-1]);
+    std::cout << "pipe count: " << pipeCount << endl;
 }
 
 

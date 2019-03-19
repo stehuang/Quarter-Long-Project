@@ -210,11 +210,34 @@ Updates:
 * 
 
 
+### 03/16/19, Week 10 Saturday
+
+Notes from Today:
+* To set a background, use [setBackgroundBrush](https://doc.qt.io/qt-5/qgraphicsscene.html#backgroundBrush-prop) from QGraphicsScene class
+	+ the function belongs to scene because we display everything added to the Game's scene
+	+ I also watched this [tutorial](https://www.youtube.com/watch?v=xPs40BrYHkg) that shows how to add a background image
+* Revisited how to [generate random numbers](http://www.cplusplus.com/reference/cstdlib/rand/)
+	+ need to include headers:
+	+ #include <stdio.h> 
+	+ #include <stdlib.h> 
+	+ #include <time.h> 
+* When declaring a QRect item for example, there are four parameters
+	+ QRect(50, 50, 100, 100)
+	+ The top-left corner will be at position (50,50), relative to the origin 
+* **I was wrong** in that the origin is located in the middle;
+* The origin (0,0) is located at the top left corner
+	+ Qt however does support negative coordinates; your item will just not be shown on the scene because it is specified to start at (0,0)
+	+ https://stackoverflow.com/questions/34403745/understanding-qts-graphics-view-coordinate-system
 
 
 
-
-
+Updates:
+* Set the background color for the game
+	+ background is black
+* Fixed the coordinates for objects
+	+ randomized the y-position of pipes
+	+ pipes are now attached to the top/bottom of the application window
+* Cleaned up unnecessary code from files
 
 
 
