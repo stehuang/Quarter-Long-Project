@@ -1,6 +1,7 @@
 #ifndef BIRD_H
 #define BIRD_H
 #include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QGraphicsItem>
 #include <QKeyEvent>
 #include <QPointF>
@@ -8,7 +9,7 @@
 
 
 
-class Bird:public QObject, public QGraphicsRectItem{
+class Bird:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 public:
     Bird(QGraphicsItem* parent=nullptr);

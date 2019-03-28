@@ -210,7 +210,7 @@ Updates:
 * 
 
 
-### 03/16/19, Week 10 Saturday
+### 03/18/19, Finals Week Monday
 
 Notes from Today:
 * To set a background, use [setBackgroundBrush](https://doc.qt.io/qt-5/qgraphicsscene.html#backgroundBrush-prop) from QGraphicsScene class
@@ -238,6 +238,34 @@ Updates:
 	+ randomized the y-position of pipes
 	+ pipes are now attached to the top/bottom of the application window
 * Cleaned up unnecessary code from files
+
+
+
+
+
+
+### 03/26/19
+
+Notes from Today:
+* To insert images in Qt, the best class to use is (QPixmap)[https://doc.qt.io/qt-5/qpixmap.html]
+* QPixmap inherits from QPaintDevice Class
+* To import images, create a **resources** folder, then create sub folders to add in media (images/audio etc)
+	+ I also watched this [graphics tutorial](https://www.youtube.com/watch?v=xPs40BrYHkg) that instructs one to add items
+* [QGraphicsTextItem](https://doc.qt.io/archives/qt-4.8/qgraphicstextitem.html) enables you to add text in the scene
+	* you can set the text, change the color, and change the font
+	* library [QFont](https://doc.qt.io/archives/qt-4.8/qfont.html) allows you to change the font
+* You add this to the Game world & scene like any other object
+
+
+Updates:
+* Added a **resources** source file that allows myself to import media and add them to the Game world
+	* Set the bird to an image of itself; finally!
+* Created a new class called Score that is an QGraphicsTextItem
+	* essentially we initialize a "Score" item then add it as a private member to the Game world
+	* create object via the Game's constructor
+* Connected the score update using the timer- now the score can get updated as the bird flies
+
+
 
 
 

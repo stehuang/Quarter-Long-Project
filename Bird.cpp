@@ -7,11 +7,12 @@ extern Game* game;
 Bird::Bird(QGraphicsItem* parent)
 {
     // draw rect
-    setRect(0,0,30,30);
+    //setRect(0,0,30,30);
+    setPixmap(QPixmap(":/images/bird.png"));
     QBrush brush;
     brush.setStyle(Qt::SolidPattern);
     brush.setColor(Qt::blue);
-    setBrush(brush);
+    //setBrush(brush);
 
     // make focusable
     setFlag(QGraphicsItem::ItemIsFocusable,true);

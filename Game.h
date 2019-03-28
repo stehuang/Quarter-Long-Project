@@ -3,6 +3,7 @@
 
 #include "Bird.h"
 #include "Pipe.h"
+#include "Score.h"
 #include <QGraphicsView>
 #include <QObject>
 #include <QGraphicsScene>
@@ -27,11 +28,10 @@ public slots:
 
 private:
     Bird* bird = new Bird(nullptr);
-    //Pipe* pipe = new Pipe(nullptr);
     QGraphicsScene *scene = new QGraphicsScene(0, 0, 600, 400);
     int pipeCount;
     vector <Pipe*> pipes;
-
+    Score* score;
 
 };
 
